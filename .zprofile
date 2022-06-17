@@ -7,3 +7,4 @@ export DOTNET_ROOT=/usr/local/share/dotnet/sdk/6.0.201/
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zprofile.post.zsh"
+source /opt/homebrew/opt/autoenv/activate.sh
