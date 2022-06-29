@@ -1,5 +1,6 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,25 +8,36 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/michael/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
-# export PATH="/usr/local/opt/terraform@0.12/bin:$PATH"
 
-#source /Users/<YOUR_PATH>/awesome-terminal-fonts/build/*.sh
-#zstyle ':completion:*:*:git:*' script ~/.oh-my-zsh/custom/plugins/git-completion.bash
-#fpath=(~/.oh-my-zsh/custom/plugins $fpath)
-# source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+#
+# Options
+#
+
+setopt AUTO_CD                 # [default] .. is shortcut for cd .. (etc)
+setopt AUTO_PARAM_SLASH        # tab completing directory appends a slash
+setopt AUTO_PUSHD              # [default] cd automatically pushes old dir onto dir stack
+setopt AUTO_RESUME             # allow simple commands to resume backgrounded jobs
+setopt CLOBBER                 # allow clobbering with >, no need to use >!
+setopt CORRECT                 # [default] command auto-correction
+setopt CORRECT_ALL             # [default] argument auto-correction
+setopt NO_FLOW_CONTROL         # disable start (C-s) and stop (C-q) characters
+setopt NO_HIST_IGNORE_ALL_DUPS # don't filter non-contiguous duplicates from history
+setopt HIST_FIND_NO_DUPS       # don't show dupes when searching
+setopt HIST_IGNORE_DUPS        # do filter contiguous duplicates from history
+setopt HIST_IGNORE_SPACE       # [default] don't record commands starting with a space
+setopt HIST_VERIFY             # confirm history expansion (!$, !!, !foo)
+setopt IGNORE_EOF              # [default] prevent accidental C-d from exiting shell
+setopt INTERACTIVE_COMMENTS    # [default] allow comments, even in interactive shells
+setopt LIST_PACKED             # make completion lists more densely packed
+setopt MENU_COMPLETE           # auto-insert first possible ambiguous completion
+setopt NO_NOMATCH              # [default] unmatched patterns are left unchanged
+setopt PRINT_EXIT_VALUE        # [default] for non-zero exit status
+setopt PUSHD_IGNORE_DUPS       # don't push multiple copies of same dir onto stack
+setopt PUSHD_SILENT            # [default] don't print dir stack after pushing/popping
+setopt SHARE_HISTORY           # share history across shells
 
 plugins=(
     zsh-autosuggestions 
@@ -44,63 +56,9 @@ source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-
-#POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL10K_MODE='nerdfont-complete'
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-# PATH=$PATH:~/Library/Python/2.7/bin
-# export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-#wifi 相关
-# POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
-# POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="green"
-# POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="black"
-
-# zsh_wifi_signal(){
-#         local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
-#         local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
-
-#         if [ "$airport" = "Off" ]; then
-#                 local col font
-#         fi
-# }
-
-#battery 相关
-POWERLEVEL10K_BATTERY_CHARGING_FOREGROUND='red'
-POWERLEVEL10K_BATTERY_CHARGED_FOREGROUND='blue'
-POWERLEVEL10K_BATTERY_DISCONNECTED='blue'
-POWERLEVEL10K_BATTERY_LOW_THRESHOLD='10'
-POWERLEVEL10K_BATTERY_LOW_COLOR='red'
-POWERLEVEL10K_BATTERY_VERBOSE=false
-#POWERLEVEL10K_BATTERY_STAGES=($'\u2581 ' $'\u2582 ' $'\u2583 ' $'\u2584 ' $'\u2585 ' $'\u2586 ' $'\u2587 ' $'\u2588 ')
-# POWERLEVEL10K_BATTERY_ICON='\uf1e6 '
-
-#logo下面的箭头相关
-POWERLEVEL10K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL10K_PROMPT_ON_NEWLINE=true
-POWERLEVEL10K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF054%F{073}\uF054%F{109}\uF054%f "
-
-POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='yellow'
-POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL10K_VCS_UNTRACKED_ICON='?'
 
 POWERLEVEL10K_LEFT_PROMPT_ELEMENTS=(
     os_icon 
@@ -116,21 +74,6 @@ POWERLEVEL10K_RIGHT_PROMPT_ELEMENTS=(
     load 
     background_jobs
     )
-
-#POWERLEVEL10K_SHERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="yellow"
-POWERLEVEL10K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="green"
-# POWERLEVEL10K_HOME_ICON=''
-# POWERLEVEL10K_HOME_SUB_ICON=''
-# POWERLEVEL10K_FOLDER_ICON=''
-POWERLEVEL10K_STATUS_VERBOSE=true
-POWERLEVEL10K_STATUS_CROSS=true
-POWERLEVEL10K_TIME_ICON=""
-POWERLEVEL10K_PUBLIC_IP_BACKGROUND="green"
-POWERLEVEL10K_PUBLIC_IP_FOREGROUND="black"
-POWERLEVEL10K_KUBECONTEXT_BACKGROUND="white"
-POWERLEVEL10K_KUBECONTEXT_FOREGROUND="black"
-POWERLEVEL10K_VCS_GIT_ICON='\uF408 '
-POWERLEVEL10K_VCS_GIT_GITHUB_ICON='\uF408 '
 
 # Alias
 alias cls="clear"
@@ -156,6 +99,7 @@ alias speedtest="curl -o /dev/null cachefly.cachefly.net/100mb.test"
 # alias gpom="git push origin main"
 # export LSCOLORS=""
 alias config='/usr/bin/git --git-dir=/Users/michael/.cfg/ --work-tree=/Users/michael'
+alias t='todo.sh'
 
 DISABLE_MAGIC_FUNCTIONS=true
 
@@ -173,18 +117,8 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
 
-# Kubernetes aliases
-# alias k="kubectl"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-#autojump plugin
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 neofetch
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /Users/michael/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -193,3 +127,8 @@ source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
